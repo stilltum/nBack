@@ -63,7 +63,7 @@ class nBack {
         this.current += 1
         let currentState = new Object()
 
-        // Find if there is a match, remove 
+        // Only one match per tick
         let match = 0
         for (let gameType in this.types) {
             let nextElement = 0
@@ -81,8 +81,7 @@ class nBack {
             this.types[gameType].items.push(nextElement)
             currentState[gameType] = nextElement
         }
-        
-            
+                 
         return currentState
     }
 
