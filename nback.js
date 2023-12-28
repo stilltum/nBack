@@ -33,7 +33,7 @@ class nBack {
         }
     }
 
-    guess (guess, writeLocation) {
+    guess (guess) {
         switch (guess) {
             case "symbol":
                 if (this.types.symbols.items.at(-1) == this.types.symbols.items[this.current - 1]) {
