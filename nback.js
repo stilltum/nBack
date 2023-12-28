@@ -154,7 +154,7 @@ async function run_game (game, iterations) {
         for (let button of document.getElementsByClassName("guess_button")) {
             button.style.background = "white"
         }
-        // Reneable guess button
+        // Reeneable guess button
         for (let button of document.getElementsByClassName("guess_button")) {
             button.disabled = false;
         }
