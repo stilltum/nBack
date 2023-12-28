@@ -63,62 +63,25 @@ class nBack {
         this.current += 1
         let currentState = new Object()
 
-        // Make sure there is only one match per step
-        let gameTypes = Object.keys(this.types)
-        if (gameTypes[0] == "symbols") {
-            let symbol = this.types.symbols.options.random()
-            currentState.symbols = symbol
-            if (symbol == this.types.symbols.items[this.current - 1]) {
-                let otherTypes = gameTypes.filter(x => x !== "symbols")
-                for (let otherType of otherTypes) {
-                    let invalidOption = this.types[otherType].items[this.current - 1]
-                    currentState[otherType] = this.types[otherType].options.filter(x => x !== invalidOption).random()
-                }
+        // Find if there is a match, remove 
+        let match = 0
+        for (let gameType in this.types) {
+            let nextElement = 0
+            if (!match) {
+                nextElement = this.types[gameType].options.random()
             } else {
-                let otherTypes = gameTypes.filter(x => x !== "symbols")
-                for (let otherType of otherTypes) {
-                    let invalidOption = this.types[otherType].items[this.current - 1]
-                    currentState[otherType] = this.types[otherType].options.random()
-                }
+                let invalidOption = this.types[gameType].items[this.current - 1]
+                nextElement = this.types[gameType].options.filter(x => x !== invalidOption).random()
             }
-        } else if (gameTypes[0] == "colours") {
-            let colour = this.types.colours.options.random()
-            currentState.colours = colour
-            if (colour == this.types.colours.items[this.current - 1]) {
-                let otherTypes = gameTypes.filter(x => x !== "colours")
-                for (let otherType of otherTypes) {
-                    let invalidOption = this.types[otherType].items[this.current - 1]
-                    currentState[otherType] = this.types[otherType].options.filter(x => x !== invalidOption).random()
-                }
-            } else {
-                let otherTypes = gameTypes.filter(x => x !== "colours")
-                for (let otherType of otherTypes) {
-                    let invalidOption = this.types[otherType].items[this.current - 1]
-                    currentState[otherType] = this.types[otherType].options.random()
-                }
+            
+            if (nextElement == this.types[gameType].items[this.current - 1]) {
+                match = 1
             }
-        } else if (gameTypes[0] == "positions") {
-            let position = this.types.positions.options.random()
-            currentState.positions = position
-            if (position == this.types.position.items[this.current - 1]) {
-                let otherTypes = gameTypes.filter(x => x !== "positions")
-                for (let otherType of otherTypes) {
-                    let invalidOption = this.types[otherType].items[this.current - 1]
-                    currentState[otherType] = this.types[otherType].options.filter(x => x !== invalidOption).random()
-                }
-            } else {
-                let otherTypes = gameTypes.filter(x => x !== "positions")
-                for (let otherType of otherTypes) {
-                    let invalidOption = this.types[otherType].items[this.current - 1]
-                    currentState[otherType] = this.types[otherType].options.random()
-                }
-            }
+
+            this.types[gameType].items.push(nextElement)
+            currentState[gameType] = nextElement
         }
         
-        // Add new elements to array
-        for (let element in currentState) {
-            this.types[element].items.push(currentState[element])
-        }
             
         return currentState
     }
