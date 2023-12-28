@@ -26,7 +26,7 @@ class nBack {
         }
         if (nbackTypes.includes("position")) {
             this.types.positions =  new Object()
-            this.types.positions.options = ["0","1","2","3","4","5","6","7","38"]
+            this.types.positions.options = ["0","1","2","3","4","5","6","7","8"]
             this.types.positions.items = new Array()
             this.types.positions.correct = 0
             this.types.positions.incorrect = 0
@@ -146,6 +146,9 @@ async function run_game (game, iterations) {
         game.guess("symbol")
 
         //Draw game state
+        nBack_cell = document.getElementById("pos" + current_state.positions)
+        nBack_cell.innerHTML = current_state.symbols
+        nBack_cell.style.backgroundColor = current_state.colours
       
         // Main loop tick
         await timer(3000);
