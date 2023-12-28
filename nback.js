@@ -33,28 +33,33 @@ class nBack {
         }
     }
 
-    guess (guess) {
-        console.log(guess)
+    guess (guess, writeLocation) {
         switch (guess) {
             case "symbol":
                 if (this.types.symbols.items.at(-1) == this.types.symbols.items[this.current - 1]) {
                     this.types.symbols.correct += 1
+                    document.getElementById("symbol_button").style.background = "green"
                 } else {
                     this.types.symbols.incorrect += 1
+                    document.getElementById("symbol_button").style.background = "red"
                 }
                 break
             case "colour":
                 if (this.types.colours.items.at(-1) == this.types.colours.items[this.current - 1]) {
                     this.types.colours.correct += 1
+                    document.getElementById("colour_button").style.background = "green"
                 } else {
                     this.types.colours.incorrect += 1
+                    document.getElementById("colour_button").style.background = "red"
                 }
                 break
             case "position":
                 if (this.types.positions.items.at(-1) == this.types.positions.items[this.current - 1]) {
                     this.types.positions.correct += 1
+                    document.getElementById("position_button").style.background = "green"
                 } else {
                     this.types.positions.incorrect += 1
+                    document.getElementById("position_button").style.background = "red"
                 }
                 break
         }
@@ -140,6 +145,10 @@ async function run_game (game, iterations) {
             nBack_cell.innerHTML = ""
             nBack_cell.style.backgroundColor = "White"
         }
+        // Blank out answer response
+        for (let button of document.getElementsByClassName("guess_button")) {
+            button.style.background = "white"
+        }
 
         // Update game state
         let current_state = game.stepForward()
@@ -158,14 +167,11 @@ async function run_game (game, iterations) {
         }
       
         // Main loop tick
+        document.getElementById("round").innerHTML = i + 1
         await timer(3000);
     }
     console.log(game.getStats())
 }
-
-// Console Test
-// game = new nBack(1, ["symbol","colour","position"])
-// run_game(game, 10)
 
 // New game button
 function new_game () {
