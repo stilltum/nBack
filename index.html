@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1 id="nBack_header">nBack 1</h1>
-    <form id="game_options" action="javascript:start_game()">
+    <form id="game_options" action="javascript:new_game()">
         <label for="level">Level</label>
         <select id="nback_level" name="nback_level">
             <option value="1">1</option>
@@ -35,12 +35,11 @@
         <div class="nBack_cell" id="pos3"></div><div class="nBack_cell" id="pos4"></div><div class="nBack_cell" id="pos5"></div>
         <div class="nBack_cell" id="pos6"></div><div class="nBack_cell" id="pos7"></div><div class="nBack_cell" id="pos8"></div>
     </div>
+    <h2>Round:</h2>
+    <div id="round"></div>
     
     <div id="guess_options">
         <h2>Guess:</h2>
-        <button class="guess_button" id="position_button">Position</button>
-        <button class="guess_button" id="colour_button">Colour</button>
-        <button class="guess_button" id="symbol_button">Symbol</button>
     </div>
 </body>
 </html>
