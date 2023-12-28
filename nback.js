@@ -63,6 +63,11 @@ class nBack {
                 }
                 break
         }
+
+        // Disable guess button for the tick
+        for (let button of document.getElementsByClassName("guess_button")) {
+            button.disabled = true;
+        }
     }
  
     stepForward () {
@@ -148,6 +153,10 @@ async function run_game (game, iterations) {
         // Blank out answer response
         for (let button of document.getElementsByClassName("guess_button")) {
             button.style.background = "white"
+        }
+        // Reneable guess button
+        for (let button of document.getElementsByClassName("guess_button")) {
+            button.disabled = false;
         }
 
         // Update game state
