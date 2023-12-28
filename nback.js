@@ -19,7 +19,7 @@ class nBack {
         }
         if (nbackTypes.includes("colour")) {
             this.types.colours =  new Object()
-            this.types.colours.options = ["blue","green","red","black","white"]
+            this.types.colours.options = ["blue","green","red","black","yellow"]
             this.types.colours.items = new Array()
             this.types.colours.correct = 0
             this.types.colours.incorrect = 0
@@ -142,13 +142,20 @@ async function run_game (game, iterations) {
 
         // Update game state
         let current_state = game.stepForward()
-        console.log(current_state)
-        game.guess("symbol")
+        //game.guess("symbol")
 
         //Draw game state
-        nBack_cell = document.getElementById("pos" + current_state.positions)
-        nBack_cell.innerHTML = current_state.symbols
-        nBack_cell.style.backgroundColor = current_state.colours
+        if (current_state.positions) {
+            nBack_cell = document.getElementById("pos" + current_state.positions)
+        } else {
+            nBack_cell = document.getElementById("pos0")
+        }
+        if (current_state.symbols) {
+            nBack_cell.innerHTML = current_state.symbols
+        }
+        if (current_state.colours) {
+            nBack_cell.style.backgroundColor = current_state.colours
+        }
       
         // Main loop tick
         await timer(3000);
