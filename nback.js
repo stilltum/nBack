@@ -142,7 +142,6 @@ async function run_game (game, iterations) {
 
         // Update game state
         let current_state = game.stepForward()
-        //game.guess("symbol")
 
         //Draw game state
         if (current_state.positions) {
