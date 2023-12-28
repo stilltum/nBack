@@ -84,13 +84,13 @@ class nBack {
                 let invalidOption = this.types[gameType].items[this.current - 1]
                 nextElement = this.types[gameType].options.filter(x => x !== invalidOption).random()
             }
+
+            this.types[gameType].items.push(nextElement)
+            currentState[gameType] = nextElement
             
             if (nextElement == this.types[gameType].items[this.current - 1]) {
                 match = 1
             }
-
-            this.types[gameType].items.push(nextElement)
-            currentState[gameType] = nextElement
         }
                  
         return currentState
