@@ -19,7 +19,7 @@ class nBack {
         }
         if (nbackTypes.includes("colour")) {
             this.types.colours =  new Object()
-            this.types.colours.options = ["blue","green","red","black","yellow"]
+            this.types.colours.options = ["blue","green","red","purple","yellow"]
             this.types.colours.items = new Array()
             this.types.colours.correct = 0
             this.types.colours.incorrect = 0
