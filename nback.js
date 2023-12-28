@@ -34,6 +34,7 @@ class nBack {
     }
 
     guess (guess) {
+        console.log(guess)
         switch (guess) {
             case "symbol":
                 if (this.types.symbols.items.at(-1) == this.types.symbols.items[this.current - 1]) {
@@ -171,6 +172,7 @@ function new_game () {
     let level = document.getElementById("nback_level").selectedOptions[0].value
     let nBackTypes = document.getElementById('game_mode').selectedOptions
     nBackTypes = Array.from(nBackTypes).map(x => x.value)
+    game = new nBack(level, nBackTypes)
 
     let guessOptions = document.getElementById("guess_options")
     guessOptions.innerHTML = ""
@@ -178,6 +180,7 @@ function new_game () {
         let button = document.createElement("button")
         button.setAttribute("class", "guess_button")
         button.setAttribute("id", "symbol_button")
+        button.setAttribute("onclick", "game.guess(\"symbol\")")
         button.textContent = "Symbol"
         guessOptions.appendChild(button)
     }
@@ -185,6 +188,7 @@ function new_game () {
         let button = document.createElement("button")
         button.setAttribute("class", "guess_button")
         button.setAttribute("id", "colour_button")
+        button.setAttribute("onclick", "game.guess(\"colour\")")
         button.textContent = "Colour"
         guessOptions.appendChild(button)
     }
@@ -192,9 +196,9 @@ function new_game () {
         let button = document.createElement("button")
         button.setAttribute("class", "guess_button")
         button.setAttribute("id", "position_button")
+        button.setAttribute("onclick", "game.guess(\"position\")")
         button.textContent = "Position"
         guessOptions.appendChild(button)
     }
-    game = new nBack(level, nBackTypes)
     run_game(game, 10)
 }
