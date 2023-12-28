@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="UTF-8" />
+  <title>nBack</title>
+  <script src="nback.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 id="nBack_header">nBack 1</h1>
+    <form id="game_options" action="javascript:start_game()">
+        <label for="level">Level</label>
+        <select id="nback_level" name="nback_level">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="4">5</option>
+            <option value="4">6</option>
+            <option value="4">7</option>
+            <option value="4">8</option>
+            <option value="4">9</option>
+            <option value="4">10</option>
+        </select>
+        <label for="game_mode">Modes</label>
+        <select id="game_mode" multiple size="3">
+            <option value="symbol">Symbol</option>
+            <option value="colour">Colour</option>
+            <option value="position">Position</option>
+        </select>
+        <input type="submit" value="Start Game">
+    </form>
+    <div id="nBack_square">
+        <div class="nBack_cell" id="pos0"></div><div class="nBack_cell" id="pos1"></div><div class="nBack_cell" id="pos2"></div>
+        <div class="nBack_cell" id="pos3"></div><div class="nBack_cell" id="pos4"></div><div class="nBack_cell" id="pos5"></div>
+        <div class="nBack_cell" id="pos6"></div><div class="nBack_cell" id="pos7"></div><div class="nBack_cell" id="pos8"></div>
+    </div>
+    
+    <div id="guess_options">
+        <h2>Guess:</h2>
+        <button class="guess_button" id="position_button">Position</button>
+        <button class="guess_button" id="colour_button">Colour</button>
+        <button class="guess_button" id="symbol_button">Symbol</button>
+    </div>
+</body>
+</html>

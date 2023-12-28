@@ -1,0 +1,20 @@
+#nBack_square {
+    width: 30%;
+}
+
+.nBack_cell {
+      width: 30%;
+      aspect-ratio: 1 / 1;
+      border: solid;
+      float: left;
+}
+
+#guess_options {
+    width: 30%;
+    position: relative;
+}
+
+.guess_button {
+    width: 30%;
+    float: left;
+}
