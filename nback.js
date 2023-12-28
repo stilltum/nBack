@@ -167,12 +167,34 @@ async function run_game (game, iterations) {
 // run_game(game, 10)
 
 // New game button
-function start_game () {
+function new_game () {
     let level = document.getElementById("nback_level").selectedOptions[0].value
     let nBackTypes = document.getElementById('game_mode').selectedOptions
     nBackTypes = Array.from(nBackTypes).map(x => x.value)
-    console.log(nBackTypes);
 
+    let guessOptions = document.getElementById("guess_options")
+    guessOptions.innerHTML = ""
+    if (nBackTypes.includes("symbol")) {
+        let button = document.createElement("button")
+        button.setAttribute("class", "guess_button")
+        button.setAttribute("id", "symbol_button")
+        button.textContent = "Symbol"
+        guessOptions.appendChild(button)
+    }
+    if (nBackTypes.includes("colour")) {
+        let button = document.createElement("button")
+        button.setAttribute("class", "guess_button")
+        button.setAttribute("id", "colour_button")
+        button.textContent = "Colour"
+        guessOptions.appendChild(button)
+    }
+    if (nBackTypes.includes("position")) {
+        let button = document.createElement("button")
+        button.setAttribute("class", "guess_button")
+        button.setAttribute("id", "position_button")
+        button.textContent = "Position"
+        guessOptions.appendChild(button)
+    }
     game = new nBack(level, nBackTypes)
     run_game(game, 10)
 }
