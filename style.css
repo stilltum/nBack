@@ -3,10 +3,14 @@
 }
 
 .nBack_cell {
-      width: 30%;
-      aspect-ratio: 1 / 1;
-      border: solid;
-      float: left;
+    text-align:center;
+    line-height: 100px;
+    vertical-align: middle;
+    font-size: 50px;
+    width: 30%;
+    aspect-ratio: 1 / 1;
+    border: solid;
+    float: left;
 }
 
 #guess_options {
