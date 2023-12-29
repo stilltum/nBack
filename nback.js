@@ -165,6 +165,9 @@ async function run_game (game, iterations) {
         //Draw game state
         if (current_state.positions) {
             nBack_cell = document.getElementById("pos" + current_state.positions)
+            if (current_state.positions.length == 1) {
+                nBack_cell.style.backgroundColor = "black"
+            }
         } else {
             nBack_cell = document.getElementById("pos0")
         }
@@ -187,6 +190,10 @@ function new_game () {
     let level = document.getElementById("nback_level").selectedOptions[0].value
     let nBackTypes = document.getElementById('game_mode').selectedOptions
     nBackTypes = Array.from(nBackTypes).map(x => x.value)
+    if (typeof(nbackTypes) == "undefined") {
+        alert("select at least one game mode")
+        return
+    }
     game = new nBack(level, nBackTypes)
 
     let guessOptions = document.getElementById("guess_options")
