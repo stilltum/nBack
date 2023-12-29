@@ -213,24 +213,24 @@ Array.prototype.random = function () {
           let button = document.createElement("button")
           button.setAttribute("class", "guess_button")
           button.setAttribute("id", "symbol_button") 
-          button.addEventListener("click", () => game.guess("symbol", button))
           button.textContent = "Symbol"
-          guessOptions.appendChild(button)  
+          button.addEventListener("click", () => game.guess("symbol", button))
+          guessOptions.appendChild(button)
       }
       if (nBackTypes.includes("colour")) {
           let button = document.createElement("button")
           button.setAttribute("class", "guess_button")
           button.setAttribute("id", "colour_button")
-          button.addEventListener("click", () => game.guess("colour", button))
           button.textContent = "Colour"
+          button.addEventListener("click", () => game.guess("colour", button))
           guessOptions.appendChild(button)
       }
       if (nBackTypes.includes("position")) {
           let button = document.createElement("button")
           button.setAttribute("class", "guess_button")
           button.setAttribute("id", "position_button")
-          button.addEventListener("click", () => game.guess("position", button))
           button.textContent = "Position"
+          button.addEventListener("click", () => game.guess("position", button))
           guessOptions.appendChild(button)
       }
       run_game(game, rounds)
