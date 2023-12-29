@@ -143,8 +143,7 @@ var game;
 // Main game loop
 const timer = ms => new Promise(res => setTimeout(res, ms))
 async function run_game (game, iterations) {
-
-    for (let i = 0; i < iterations; i++) {
+    for (let i = 0; i < (iterations + 1); i++) {
         // Blank out cells
         for (var nBack_cell of document.getElementsByClassName("nBack_cell")) {
             nBack_cell.innerHTML = ""
@@ -200,6 +199,7 @@ async function run_game (game, iterations) {
 // New game button
 function new_game () {
     let level = document.getElementById("nback_level").selectedOptions[0].value
+    let rounds = Number(document.getElementById("rounds").selectedOptions[0].value)
     let nBackTypes = document.getElementById('game_mode').selectedOptions
     nBackTypes = Array.from(nBackTypes).map(x => x.value)
     if (typeof(nbackTypes) == "undefined" && nBackTypes.length == 0) {
@@ -234,5 +234,5 @@ function new_game () {
         button.textContent = "Position"
         guessOptions.appendChild(button)
     }
-    run_game(game, 7)
+    run_game(game, rounds)
 }
