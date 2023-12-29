@@ -173,6 +173,9 @@ async function run_game (game, iterations) {
         }
         if (current_state.symbols) {
             nBack_cell.innerHTML = current_state.symbols
+            if (!current_state.colours) {
+                nBack_cell.style.color = "white"
+            }
         }
         if (current_state.colours) {
             nBack_cell.style.backgroundColor = current_state.colours
@@ -182,7 +185,15 @@ async function run_game (game, iterations) {
         document.getElementById("round").innerHTML = i + 1
         await timer(3000);
     }
-    console.log(game.getStats())
+    // Display game stats
+    let stats_string = "<h2>Stats:</h2>"
+    let game_stats = game.getStats()
+    for (let type in game_stats) {
+         stats_string += `<div>${type}: correct:\n${game_stats[type].correct} incorrect: ${game_stats[type].incorrect}<div>`;
+    }
+    document.getElementById("game_stats").innerHTML = stats_string
+
+    console.log(game_stats)
 }
 
 // New game button
@@ -190,7 +201,6 @@ function new_game () {
     let level = document.getElementById("nback_level").selectedOptions[0].value
     let nBackTypes = document.getElementById('game_mode').selectedOptions
     nBackTypes = Array.from(nBackTypes).map(x => x.value)
-    console.log(nBackTypes.length)
     if (typeof(nbackTypes) == "undefined" && nBackTypes.length == 0) {
         alert("select at least one game mode")
         return
@@ -223,5 +233,5 @@ function new_game () {
         button.textContent = "Position"
         guessOptions.appendChild(button)
     }
-    run_game(game, 10)
+    run_game(game, 2)
 }
