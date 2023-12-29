@@ -224,7 +224,7 @@ function new_game () {
         let button = document.createElement("button")
         button.setAttribute("class", "guess_button")
         button.setAttribute("id", "colour_button")
-        button.setAttribute("onclick", "game.guess(\"colour\"), document.getElementById(\"colour_button\")")
+        button.setAttribute("onclick", "game.guess(\"colour\", document.getElementById(\"colour_button\"))")
         button.textContent = "Colour"
         guessOptions.appendChild(button)
     }
