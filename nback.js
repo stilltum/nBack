@@ -211,25 +211,25 @@ Array.prototype.random = function () {
       guessOptions.innerHTML = ""
       if (nBackTypes.includes("symbol")) {
           let button = document.createElement("button")
+          button.textContent = "Symbol"
           button.setAttribute("class", "guess_button")
           button.setAttribute("id", "symbol_button") 
-          button.textContent = "Symbol"
           button.addEventListener("click", () => game.guess("symbol", button))
           guessOptions.appendChild(button)
       }
       if (nBackTypes.includes("colour")) {
           let button = document.createElement("button")
+          button.textContent = "Colour"
           button.setAttribute("class", "guess_button")
           button.setAttribute("id", "colour_button")
-          button.textContent = "Colour"
           button.addEventListener("click", () => game.guess("colour", button))
           guessOptions.appendChild(button)
       }
       if (nBackTypes.includes("position")) {
           let button = document.createElement("button")
+          button.textContent = "Position"
           button.setAttribute("class", "guess_button")
           button.setAttribute("id", "position_button")
-          button.textContent = "Position"
           button.addEventListener("click", () => game.guess("position", button))
           guessOptions.appendChild(button)
       }
