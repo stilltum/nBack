@@ -3,6 +3,7 @@
 }
 
 .nBack_cell {
+    position:relative;
     text-align:center;
     line-height: 100px;
     vertical-align: middle;
@@ -11,6 +12,13 @@
     aspect-ratio: 1 / 1;
     border: solid;
     float: left;
+}
+
+#guess_header {
+    font-size: 30px;
+    width: 100%;
+    float: left;
+    position: relative;
 }
 
 #guess_options {
