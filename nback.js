@@ -176,7 +176,6 @@ async function run_game (game, iterations) {
                 nBack_cell.style.color = "white"
                 nBack_cell.style.borderColor = "black"
             } else {
-                console.log("hello world")
                 nBack_cell.style.color = "black"
             }
         }
