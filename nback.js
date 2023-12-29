@@ -63,11 +63,6 @@ Array.prototype.random = function () {
                   }
                   break
           }
-  
-          // Disable guess button for the tick
-          for (let button of document.getElementsByClassName("guess_button")) {
-              button.disabled = true;
-          }
       }
    
       stepForward () {
@@ -197,41 +192,58 @@ Array.prototype.random = function () {
   
   // New game button
   function new_game () {
-      let level = document.getElementById("nback_level").selectedOptions[0].value
-      let rounds = Number(document.getElementById("rounds").selectedOptions[0].value)
-      let nBackTypes = document.getElementById('game_mode').selectedOptions
-      nBackTypes = Array.from(nBackTypes).map(x => x.value)
-      if (typeof(nbackTypes) == "undefined" && nBackTypes.length == 0) {
-          alert("select at least one game mode")
-          return
-      }
-      game = new nBack(level, nBackTypes)
+    // Get game options and set up the game
+    let level = document.getElementById("nback_level").selectedOptions[0].value
+    let rounds = Number(document.getElementById("rounds").selectedOptions[0].value)
+    let nBackTypes = document.getElementById('game_mode').selectedOptions
+    nBackTypes = Array.from(nBackTypes).map(x => x.value)
+    if (typeof(nbackTypes) == "undefined" && nBackTypes.length == 0) {
+        alert("select at least one game mode")
+        return
+    }
+    game = new nBack(level, nBackTypes)
   
-      let guessOptions = document.getElementById("guess_options")
-      guessOptions.innerHTML = ""
-      if (nBackTypes.includes("symbol")) {
-          let button = document.createElement("button")
-          button.textContent = "Symbol"
-          button.setAttribute("class", "guess_button")
-          button.setAttribute("id", "symbol_button") 
-          button.addEventListener("click", () => game.guess("symbol", button))
-          guessOptions.appendChild(button)
-      }
-      if (nBackTypes.includes("colour")) {
-          let button = document.createElement("button")
-          button.textContent = "Colour"
-          button.setAttribute("class", "guess_button")
-          button.setAttribute("id", "colour_button")
-          button.addEventListener("click", () => game.guess("colour", button))
-          guessOptions.appendChild(button)
-      }
-      if (nBackTypes.includes("position")) {
-          let button = document.createElement("button")
-          button.textContent = "Position"
-          button.setAttribute("class", "guess_button")
-          button.setAttribute("id", "position_button")
-          button.addEventListener("click", () => game.guess("position", button))
-          guessOptions.appendChild(button)
-      }
-      run_game(game, rounds)
-  }
+    // Add game guess buttons; only one can be clicked on per tick
+    let guessOptions = document.getElementById("guess_options")
+    guessOptions.innerHTML = ""
+    if (nBackTypes.includes("symbol")) {
+        let button = document.createElement("button")
+        button.textContent = "Symbol"
+        button.setAttribute("class", "guess_button")
+        button.setAttribute("id", "symbol_button") 
+        button.addEventListener("click", () => {
+            game.guess("symbol", button)
+            for (let button of document.getElementsByClassName("guess_button")) {
+                button.disabled = true;
+            }
+            })
+        guessOptions.appendChild(button)
+    }
+    if (nBackTypes.includes("colour")) {
+        let button = document.createElement("button")
+        button.textContent = "Colour"
+        button.setAttribute("class", "guess_button")
+        button.setAttribute("id", "colour_button")
+        button.addEventListener("click", () => {
+            game.guess("colour", button)
+            for (let button of document.getElementsByClassName("guess_button")) {
+                button.disabled = true;
+            }
+        })
+        guessOptions.appendChild(button)
+    }
+    if (nBackTypes.includes("position")) {
+        let button = document.createElement("button")
+        button.textContent = "Position"
+        button.setAttribute("class", "guess_button")
+        button.setAttribute("id", "position_button")
+        button.addEventListener("click", () => {
+            game.guess("position", button)
+            for (let button of document.getElementsByClassName("guess_button")) {
+                button.disabled = true;
+            }
+        })
+        guessOptions.appendChild(button)
+    }
+    run_game(game, rounds)
+}
