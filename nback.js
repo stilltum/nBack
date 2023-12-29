@@ -149,7 +149,7 @@ Array.prototype.random = function () {
               nBack_cell.innerHTML = ""
               nBack_cell.style.backgroundColor = "White"
           }
-          // Blank out answer response
+          // Reset guess button
           for (let button of document.getElementsByClassName("guess_button")) {
               button.style.background = "white"
               button.disabled = false;
