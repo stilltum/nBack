@@ -190,7 +190,8 @@ function new_game () {
     let level = document.getElementById("nback_level").selectedOptions[0].value
     let nBackTypes = document.getElementById('game_mode').selectedOptions
     nBackTypes = Array.from(nBackTypes).map(x => x.value)
-    if (typeof(nbackTypes) == "undefined") {
+    console.log(nBackTypes.length)
+    if (typeof(nbackTypes) == "undefined" && nBackTypes.length == 0) {
         alert("select at least one game mode")
         return
     }
