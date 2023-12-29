@@ -7,7 +7,7 @@ class nBack {
     constructor (nbackLevel, nbackTypes)  {
 
         this.level = nbackLevel
-        this.current = -nbackLevel
+        this.current = -nbackLevel - 1 // First step starts at 1, so subtract to get to 0
         this.types = {}
 
         if (nbackTypes.includes("symbol")) {
@@ -36,7 +36,7 @@ class nBack {
     guess (guess, feedback_element) {
         switch (guess) {
             case "symbol":
-                if (this.types.symbols.items.at(-1) == this.types.symbols.items[this.current - 1]) {
+                if (this.types.symbols.items.at(-1) == this.types.symbols.items[this.current]) {
                     this.types.symbols.correct += 1
                     feedback_element.style.background = "green"
                 } else {
@@ -45,7 +45,7 @@ class nBack {
                 }
                 break
             case "colour":
-                if (this.types.colours.items.at(-1) == this.types.colours.items[this.current - 1]) {
+                if (this.types.colours.items.at(-1) == this.types.colours.items[this.current]) {
                     this.types.colours.correct += 1
                     feedback_element.style.background = "green"
                 } else {
@@ -54,7 +54,7 @@ class nBack {
                 }
                 break
             case "position":
-                if (this.types.positions.items.at(-1) == this.types.positions.items[this.current - 1]) {
+                if (this.types.positions.items.at(-1) == this.types.positions.items[this.current]) {
                     this.types.positions.correct += 1
                     feedback_element.style.background = "green"
                 } else {
@@ -81,14 +81,14 @@ class nBack {
             if (!match) {
                 nextElement = this.types[gameType].options.random()
             } else {
-                let invalidOption = this.types[gameType].items[this.current - 1]
+                let invalidOption = this.types[gameType].items[this.current]
                 nextElement = this.types[gameType].options.filter(x => x !== invalidOption).random()
             }
 
             this.types[gameType].items.push(nextElement)
             currentState[gameType] = nextElement
             
-            if (nextElement == this.types[gameType].items[this.current - 1]) {
+            if (nextElement == this.types[gameType].items[this.current]) {
                 match = 1
             }
         }
@@ -190,7 +190,7 @@ async function run_game (game, iterations) {
     for (let type in game_stats) {
          stats_string += `<div>${type}: correct:\n${game_stats[type].correct} incorrect: ${game_stats[type].incorrect}<div>`;
     }
-    document.getElementById("game_stats").innerHTML = stats_string
+    //document.getElementById("game_stats").innerHTML = stats_string
 
     console.log(game_stats)
 }
@@ -198,7 +198,7 @@ async function run_game (game, iterations) {
 // New game button
 function new_game () {
     let level = document.getElementById("nback_level").selectedOptions[0].value
-    let rounds = Number(document.getElementById("rounds").selectedOptions[0].value)
+    //let rounds = Number(document.getElementById("rounds").selectedOptions[0].value)
     let nBackTypes = document.getElementById('game_mode').selectedOptions
     nBackTypes = Array.from(nBackTypes).map(x => x.value)
     if (typeof(nbackTypes) == "undefined" && nBackTypes.length == 0) {
@@ -233,5 +233,5 @@ function new_game () {
         button.textContent = "Position"
         guessOptions.appendChild(button)
     }
-    run_game(game, rounds)
+    run_game(game, 5)
 }
