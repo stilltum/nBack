@@ -33,33 +33,33 @@ class nBack {
         }
     }
 
-    guess (guess) {
+    guess (guess, feedback_element) {
         switch (guess) {
             case "symbol":
                 if (this.types.symbols.items.at(-1) == this.types.symbols.items[this.current - 1]) {
                     this.types.symbols.correct += 1
-                    document.getElementById("symbol_button").style.background = "green"
+                    feedback_element.style.background = "green"
                 } else {
                     this.types.symbols.incorrect += 1
-                    document.getElementById("symbol_button").style.background = "red"
+                    feedback_element.style.background = "red"
                 }
                 break
             case "colour":
                 if (this.types.colours.items.at(-1) == this.types.colours.items[this.current - 1]) {
                     this.types.colours.correct += 1
-                    document.getElementById("colour_button").style.background = "green"
+                    feedback_element.style.background = "green"
                 } else {
                     this.types.colours.incorrect += 1
-                    document.getElementById("colour_button").style.background = "red"
+                    feedback_element.style.background = "red"
                 }
                 break
             case "position":
                 if (this.types.positions.items.at(-1) == this.types.positions.items[this.current - 1]) {
                     this.types.positions.correct += 1
-                    document.getElementById("position_button").style.background = "green"
+                    feedback_element.style.background = "green"
                 } else {
                     this.types.positions.incorrect += 1
-                    document.getElementById("position_button").style.background = "red"
+                    feedback_element.style.background = "red"
                 }
                 break
         }
@@ -143,7 +143,7 @@ var game;
 // Main game loop
 const timer = ms => new Promise(res => setTimeout(res, ms))
 async function run_game (game, iterations) {
-    for (let i = 0; i < (iterations + 1); i++) {
+    for (let i = 0; i < iterations; i++) {
         // Blank out cells
         for (var nBack_cell of document.getElementsByClassName("nBack_cell")) {
             nBack_cell.innerHTML = ""
@@ -172,9 +172,12 @@ async function run_game (game, iterations) {
         }
         if (current_state.symbols) {
             nBack_cell.innerHTML = current_state.symbols
-            if (!current_state.colours) {
+            if (current_state.colours == "undefined") {
                 nBack_cell.style.color = "white"
                 nBack_cell.style.borderColor = "black"
+            } else {
+                console.log("hello world")
+                nBack_cell.style.color = "black"
             }
         }
         if (current_state.colours) {
@@ -214,7 +217,7 @@ function new_game () {
         let button = document.createElement("button")
         button.setAttribute("class", "guess_button")
         button.setAttribute("id", "symbol_button")
-        button.setAttribute("onclick", "game.guess(\"symbol\")")
+        button.setAttribute("onclick", "game.guess(\"symbol\", document.getElementById(\"symbol_button\"))")
         button.textContent = "Symbol"
         guessOptions.appendChild(button)
     }
@@ -222,7 +225,7 @@ function new_game () {
         let button = document.createElement("button")
         button.setAttribute("class", "guess_button")
         button.setAttribute("id", "colour_button")
-        button.setAttribute("onclick", "game.guess(\"colour\")")
+        button.setAttribute("onclick", "game.guess(\"colour\"), document.getElementById(\"colour_button\")")
         button.textContent = "Colour"
         guessOptions.appendChild(button)
     }
@@ -230,7 +233,7 @@ function new_game () {
         let button = document.createElement("button")
         button.setAttribute("class", "guess_button")
         button.setAttribute("id", "position_button")
-        button.setAttribute("onclick", "game.guess(\"position\")")
+        button.setAttribute("onclick", "game.guess(\"position\", document.getElementById(\"position_button\"))")
         button.textContent = "Position"
         guessOptions.appendChild(button)
     }
