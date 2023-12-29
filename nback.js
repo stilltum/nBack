@@ -175,6 +175,7 @@ async function run_game (game, iterations) {
             nBack_cell.innerHTML = current_state.symbols
             if (!current_state.colours) {
                 nBack_cell.style.color = "white"
+                nBack_cell.style.borderColor = "black"
             }
         }
         if (current_state.colours) {
@@ -233,5 +234,5 @@ function new_game () {
         button.textContent = "Position"
         guessOptions.appendChild(button)
     }
-    run_game(game, 2)
+    run_game(game, 7)
 }
