@@ -212,16 +212,16 @@ Array.prototype.random = function () {
       if (nBackTypes.includes("symbol")) {
           let button = document.createElement("button")
           button.setAttribute("class", "guess_button")
-          button.setAttribute("id", "symbol_button")
-          button.setAttribute("onclick", `game.guess("symbol", document.getElementById("symbol_button"))`)
+          button.setAttribute("id", "symbol_button") 
+          button.addEventListener("click", () => game.guess("symbol", button))
           button.textContent = "Symbol"
-          guessOptions.appendChild(button)
+          guessOptions.appendChild(button)  
       }
       if (nBackTypes.includes("colour")) {
           let button = document.createElement("button")
           button.setAttribute("class", "guess_button")
           button.setAttribute("id", "colour_button")
-          button.setAttribute("onclick", `game.guess("colour", document.getElementById("colour_button"))`)
+          button.addEventListener("click", () => game.guess("colour", button))
           button.textContent = "Colour"
           guessOptions.appendChild(button)
       }
@@ -229,7 +229,7 @@ Array.prototype.random = function () {
           let button = document.createElement("button")
           button.setAttribute("class", "guess_button")
           button.setAttribute("id", "position_button")
-          button.setAttribute("onclick", `game.guess("position", document.getElementById("position_button"))`)
+          button.addEventListener("click", () => game.guess("position", button))
           button.textContent = "Position"
           guessOptions.appendChild(button)
       }
