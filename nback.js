@@ -213,7 +213,7 @@ function new_game () {
         let button = document.createElement("button")
         button.setAttribute("class", "guess_button")
         button.setAttribute("id", "symbol_button")
-        button.setAttribute("onclick", "game.guess(\"symbol\", document.getElementById(\"symbol_button\"))")
+        button.setAttribute("onclick", `game.guess("symbol", document.getElementById("symbol_button"))`)
         button.textContent = "Symbol"
         guessOptions.appendChild(button)
     }
@@ -221,7 +221,7 @@ function new_game () {
         let button = document.createElement("button")
         button.setAttribute("class", "guess_button")
         button.setAttribute("id", "colour_button")
-        button.setAttribute("onclick", "game.guess(\"colour\", document.getElementById(\"colour_button\"))")
+        button.setAttribute("onclick", `game.guess("colour", document.getElementById("colour_button"))`)
         button.textContent = "Colour"
         guessOptions.appendChild(button)
     }
@@ -229,7 +229,7 @@ function new_game () {
         let button = document.createElement("button")
         button.setAttribute("class", "guess_button")
         button.setAttribute("id", "position_button")
-        button.setAttribute("onclick", "game.guess(\"position\", document.getElementById(\"position_button\"))")
+        button.setAttribute("onclick", `game.guess("position", document.getElementById("position_button"))`)
         button.textContent = "Position"
         guessOptions.appendChild(button)
     }
