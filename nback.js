@@ -153,10 +153,6 @@ Array.prototype.random = function () {
           //Draw game state
           if (current_state.positions) {
               nBack_cell = document.getElementById("pos" + current_state.positions)
-              console.log(current_state.positions.length)
-              if (!current_state.colours) {
-                nBack_cell.style.backgroundColor = "black"
-              }
           } else {
               nBack_cell = document.getElementById("pos0")
           }
@@ -171,6 +167,8 @@ Array.prototype.random = function () {
           }
           if (current_state.colours) {
               nBack_cell.style.backgroundColor = current_state.colours
+          } else {
+              nBack_cell.style.backgroundColor = "black"
           }
         
           // Main loop tick
