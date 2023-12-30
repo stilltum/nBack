@@ -222,7 +222,7 @@ Array.prototype.random = function () {
             for (let button of document.getElementsByClassName("guess_button")) {
                 button.disabled = true;
             }
-            })
+        })
         guessOptions.appendChild(button)
     }
     if (nBackTypes.includes("colour")) {
