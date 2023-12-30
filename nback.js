@@ -153,8 +153,9 @@ Array.prototype.random = function () {
           //Draw game state
           if (current_state.positions) {
               nBack_cell = document.getElementById("pos" + current_state.positions)
-              if (current_state.positions.length == 1) {
-                  nBack_cell.style.backgroundColor = "black"
+              console.log(current_state.positions.length)
+              if (!current_state.colours) {
+                nBack_cell.style.backgroundColor = "black"
               }
           } else {
               nBack_cell = document.getElementById("pos0")
