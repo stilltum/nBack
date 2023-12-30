@@ -161,8 +161,6 @@ Array.prototype.random = function () {
               if (!current_state.colours) {
                   nBack_cell.style.color = "white"
                   nBack_cell.style.borderColor = "black"
-              } else {
-                  nBack_cell.style.color = "black"
               }
           }
           if (current_state.colours) {
