@@ -214,8 +214,7 @@ Array.prototype.random = function () {
         button.setAttribute("class", "guess_button")
         button.setAttribute("id", "symbol_button") 
         button.addEventListener("click", () => {
-            let result = game.guess("symbol")
-            if (result == true) {
+            if (game.guess("symbol")) {
                 button.style.background = "green"
             } else {
                 button.style.background = "red"
@@ -232,8 +231,7 @@ Array.prototype.random = function () {
         button.setAttribute("class", "guess_button")
         button.setAttribute("id", "colour_button")
         button.addEventListener("click", () => {
-            let result = game.guess("colour")
-            if (result == true) {
+            if (game.guess("colour")) {
                 button.style.background = "green"
             } else {
                 button.style.background = "red"
@@ -250,8 +248,7 @@ Array.prototype.random = function () {
         button.setAttribute("class", "guess_button")
         button.setAttribute("id", "position_button")
         button.addEventListener("click", () => {
-            let result = game.guess("position")
-            if (result == true) {
+            if (game.guess("position")) {
                 button.style.background = "green"
             } else {
                 button.style.background = "red"
