@@ -33,33 +33,33 @@ Array.prototype.random = function () {
           }
       }
   
-      guess (guess, feedback_element) {
+      guess (guess) {
           switch (guess) {
               case "symbol":
                   if (this.types.symbols.items.at(-1) == this.types.symbols.items[this.current]) {
                       this.types.symbols.correct += 1
-                      feedback_element.style.background = "green"
+                      return true
                   } else {
                       this.types.symbols.incorrect += 1
-                      feedback_element.style.background = "red"
+                      return false
                   }
                   break
               case "colour":
                   if (this.types.colours.items.at(-1) == this.types.colours.items[this.current]) {
                       this.types.colours.correct += 1
-                      feedback_element.style.background = "green"
+                      return true
                   } else {
                       this.types.colours.incorrect += 1
-                      feedback_element.style.background = "red"
+                      return false
                   }
                   break
               case "position":
                   if (this.types.positions.items.at(-1) == this.types.positions.items[this.current]) {
                       this.types.positions.correct += 1
-                      feedback_element.style.background = "green"
+                      return true
                   } else {
                       this.types.positions.incorrect += 1
-                      feedback_element.style.background = "red"
+                      return false
                   }
                   break
           }
@@ -140,6 +140,7 @@ Array.prototype.random = function () {
   async function run_game (game, iterations) {
       for (let i = 0; i < iterations; i++) {
           // Blank out cells
+          console.log(i)
           for (var nBack_cell of document.getElementsByClassName("nBack_cell")) {
               nBack_cell.innerHTML = ""
               nBack_cell.style.backgroundColor = "White"
@@ -206,13 +207,20 @@ Array.prototype.random = function () {
     // Add game guess buttons; only one can be clicked on per tick
     let guessOptions = document.getElementById("guess_options")
     guessOptions.innerHTML = ""
+
+    // Button Logic
     if (nBackTypes.includes("symbol")) {
         let button = document.createElement("button")
         button.textContent = "Symbol"
         button.setAttribute("class", "guess_button")
         button.setAttribute("id", "symbol_button") 
         button.addEventListener("click", () => {
-            game.guess("symbol", button)
+            let result = game.guess("symbol")
+            if (result == true) {
+                button.style.background = "green"
+            } else {
+                button.style.background = "red"
+            }
             for (let button of document.getElementsByClassName("guess_button")) {
                 button.disabled = true;
             }
@@ -225,7 +233,12 @@ Array.prototype.random = function () {
         button.setAttribute("class", "guess_button")
         button.setAttribute("id", "colour_button")
         button.addEventListener("click", () => {
-            game.guess("colour", button)
+            let result = game.guess("colour")
+            if (result == true) {
+                button.style.background = "green"
+            } else {
+                button.style.background = "red"
+            }
             for (let button of document.getElementsByClassName("guess_button")) {
                 button.disabled = true;
             }
@@ -238,7 +251,12 @@ Array.prototype.random = function () {
         button.setAttribute("class", "guess_button")
         button.setAttribute("id", "position_button")
         button.addEventListener("click", () => {
-            game.guess("position", button)
+            let result = game.guess("position")
+            if (result == true) {
+                button.style.background = "green"
+            } else {
+                button.style.background = "red"
+            }
             for (let button of document.getElementsByClassName("guess_button")) {
                 button.disabled = true;
             }
