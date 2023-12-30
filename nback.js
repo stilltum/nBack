@@ -43,7 +43,6 @@ Array.prototype.random = function () {
                       this.types.symbols.incorrect += 1
                       return false
                   }
-                  break
               case "colour":
                   if (this.types.colours.items.at(-1) == this.types.colours.items[this.current]) {
                       this.types.colours.correct += 1
@@ -52,7 +51,6 @@ Array.prototype.random = function () {
                       this.types.colours.incorrect += 1
                       return false
                   }
-                  break
               case "position":
                   if (this.types.positions.items.at(-1) == this.types.positions.items[this.current]) {
                       this.types.positions.correct += 1
@@ -61,7 +59,6 @@ Array.prototype.random = function () {
                       this.types.positions.incorrect += 1
                       return false
                   }
-                  break
           }
       }
    
