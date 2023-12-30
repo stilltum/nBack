@@ -158,7 +158,7 @@ Array.prototype.random = function () {
           }
           if (current_state.symbols) {
               nBack_cell.innerHTML = current_state.symbols
-              if (current_state.colours == "undefined") {
+              if (!current_state.colours) {
                   nBack_cell.style.color = "white"
                   nBack_cell.style.borderColor = "black"
               } else {
