@@ -140,7 +140,6 @@ Array.prototype.random = function () {
   async function run_game (game, iterations) {
       for (let i = 0; i < iterations; i++) {
           // Blank out cells
-          console.log(i)
           for (var nBack_cell of document.getElementsByClassName("nBack_cell")) {
               nBack_cell.innerHTML = ""
               nBack_cell.style.backgroundColor = "White"
