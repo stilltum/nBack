@@ -131,8 +131,8 @@ Array.prototype.random = function () {
   }
   // Global class variable
   var game;
-  
-  // Main game loop
+
+  // New game instance
   const timer = ms => new Promise(res => setTimeout(res, ms))
   async function run_game (game, iterations) {
 
@@ -187,7 +187,7 @@ Array.prototype.random = function () {
         guessOptions.appendChild(position_button)
     }
 
-    // Play the game
+    // Main game loop
     for (let i = 0; i < iterations; i++) {
         // Blank out cells
         for (var nBack_cell of document.getElementsByClassName("nBack_cell")) {
