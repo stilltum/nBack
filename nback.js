@@ -131,13 +131,12 @@ Array.prototype.random = function () {
   }
   // Global class variable
   var game;
-
-  // New game instance
+  
+  // Main game loop
   const timer = ms => new Promise(res => setTimeout(res, ms))
   async function run_game (game, iterations) {
 
     // Button Logic - Only show buttons of the game type selected
-    let guessOptions = document.getElementById("guess_options")
     for (let button of document.getElementsByClassName("guess_button")) {
         button.hidden = true;
     }
@@ -154,7 +153,6 @@ Array.prototype.random = function () {
                 button.disabled = true;
             }
         })
-        guessOptions.appendChild(symbol_button)
     }
     if (game.types.hasOwnProperty("colours")) {
         let colour_button = document.getElementById("colour_button")
@@ -169,7 +167,6 @@ Array.prototype.random = function () {
                 button.disabled = true;
             }
         })
-        guessOptions.appendChild(colour_button)
     }
     if (game.types.hasOwnProperty("positions")) {
         let position_button = document.getElementById("position_button")
@@ -184,10 +181,9 @@ Array.prototype.random = function () {
                 button.disabled = true;
             }
         })
-        guessOptions.appendChild(position_button)
     }
 
-    // Main game loop
+    // Play the game
     for (let i = 0; i < iterations; i++) {
         // Blank out cells
         for (var nBack_cell of document.getElementsByClassName("nBack_cell")) {
