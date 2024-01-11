@@ -170,7 +170,7 @@ Array.prototype.random = function () {
     }
     if (game.types.hasOwnProperty("positions")) {
         let position_button = document.getElementById("position_button")
-        position_button.removeAttribute("hidden")
+        position_button.hidden = false
         position_button.addEventListener("click", () => {
             if (game.guess("position")) {
                 position_button.style.background = "green"
